@@ -38,8 +38,11 @@ gameApp.controller('HomeCtrl', ['$scope', '$rootScope', '$timeout','$location','
 
     var loop = $interval(function () {
         $scope.drawSquare();
-        $scope.seconds++;
     }, $scope.time);
+
+    var loop2 = $interval(function () {
+        $scope.seconds++;
+    }, 999);
 
     $scope.updateScore = function () {
         $scope.squareClicked = true;
@@ -56,6 +59,7 @@ gameApp.controller('HomeCtrl', ['$scope', '$rootScope', '$timeout','$location','
         if (($scope.squareDrawed == 0 && $scope.squareClicked == false) || $scope.squareClicked == false) {
             q.css('background-color', '#2c3e50');
             $interval.cancel(loop);
+            $interval.cancel(loop2);
             loop = undefined;
             $scope.blocked = true;
             window.clearInterval(timerId);
