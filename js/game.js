@@ -64,6 +64,7 @@ gameApp.controller('HomeCtrl', ['$scope', '$rootScope', '$timeout','$location','
     $scope.drawSquare = function () {
         if (($scope.squareDrawed == 0 && $scope.squareClicked == false) || $scope.squareClicked == false) {
             q.css('background-color', '#2c3e50');
+            $('#gameover').css('visibility','visible')
             $interval.cancel(loop);
             $interval.cancel(loop2);
             loop = undefined;
