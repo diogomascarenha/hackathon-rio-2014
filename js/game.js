@@ -30,13 +30,15 @@ gameApp.controller('HomeCtrl', ['$scope', '$rootScope', '$timeout','$location','
     game.width($(document).width());
     game.height($(document).height());
     $scope.score = 0;
-    $scope.time = 1500;
+    $scope.seconds = 0;
+    $scope.time = 800;
     $scope.squareDrawed = 0;
     $scope.squareClicked = false;
     $scope.blocked = false;
 
     var loop = $interval(function () {
         $scope.drawSquare();
+        $scope.seconds++;
     }, $scope.time);
 
     $scope.updateScore = function () {
@@ -56,6 +58,7 @@ gameApp.controller('HomeCtrl', ['$scope', '$rootScope', '$timeout','$location','
             $interval.cancel(loop);
             loop = undefined;
             $scope.blocked = true;
+            window.clearInterval(timerId);
             return false;
         }
         $scope.squareClicked = false;
@@ -75,6 +78,5 @@ gameApp.controller('HomeCtrl', ['$scope', '$rootScope', '$timeout','$location','
         q.css('height','40px');
         $('#gameCanvas').css('position', 'relative').append(q)
     }
-
 
 }]);
