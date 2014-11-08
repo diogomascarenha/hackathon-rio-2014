@@ -1,8 +1,12 @@
 <div id="appInfo">
-    <span id="time">0:59</span>
+    <span id="time" ng-bind="time"></span>
     <span id="score" ng-bind="score"></span>
 </div>
 <div id="gameCanvas">
+    <div id="gameover">
+        Game Over
+        <a href="#/">Start</a>
+    </div>
     <span id="square"  ng-click="updateScore()"></span>
     <!--<span id="bonus" ng-click="updateScoreBonus()"></span>-->
 </div>
