@@ -1,5 +1,11 @@
 var gameApp = angular.module('gameApp', ['ngRoute', 'ngTouch']);
 
+var onDeviceReady = function() {
+    gameApp.bootstrap( document, ['gameApp']);
+}
+document.addEventListener('deviceready',
+    onDeviceReady);
+
 gameApp.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider.
