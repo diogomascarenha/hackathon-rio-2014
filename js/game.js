@@ -30,7 +30,7 @@ gameApp.controller('HomeCtrl', ['$scope', '$rootScope', '$timeout','$location','
     game.width($(document).width());
     game.height($(document).height());
     $scope.score = 0;
-    $scope.time = 600;
+    $scope.time = 800;
     $scope.squareDrawed = 0;
     $scope.squareClicked = false;
     $scope.blocked = false;
@@ -65,8 +65,8 @@ gameApp.controller('HomeCtrl', ['$scope', '$rootScope', '$timeout','$location','
     $scope.createNewInstance = function(){
         var top = Math.floor(Math.random() * game.height());
         var left = Math.floor(Math.random() * game.width());
-        var topFinal = (top <= 60) ? 60 : (top >= 640) ? 590: top;
-        var leftFinal = (left <= 0) ? 0 : (left >= 360) ? 320: left;
+        var topFinal = (top <= 60) ? 60 : (top >= 500) ? 500: top;
+        var leftFinal = (left <= 0) ? 0 : (left >= 320) ? 320: left;
 
         q.css('top', topFinal);
         q.css('left', leftFinal);

@@ -1,5 +1,8 @@
 * {margin:0; padding:0;}
-html, body {min-height: 100%;}
+html, body {
+    position:relative;
+    min-height: 100%;
+}
 
 @media only screen and (max-device-width: 480px) {
 
