@@ -1,7 +1,7 @@
 var gameApp = angular.module('gameApp', ['ngRoute', 'ngTouch']);
 
 var onDeviceReady = function() {
-    gameApp.bootstrap( document, ['gameApp']);
+    angular.bootstrap( document, ['gameApp']);
 }
 document.addEventListener('deviceready',
     onDeviceReady);
