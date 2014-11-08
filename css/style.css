@@ -76,18 +76,16 @@ html, body {min-height: 100%;}
 
     #gameCanvas {
         width: 100%;
-        position: absolute;
-        top: 0;
-        left:0;
-        z-index: 9998;
-        height: 400px;
+        height: auto;
+        position: relative;
     }
 
-    #gameCanvas #square {
+    #square {
         width: 35px;
         height: 35px;
         background-color: #c0392b;
         position: absolute;
+        z-index: 9999;
         top: 50%;
         left: 50%;
     }

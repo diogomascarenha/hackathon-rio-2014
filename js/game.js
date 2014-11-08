@@ -22,33 +22,52 @@ gameApp.controller('InitialScreenCtrl',['$scope','$rootScope','$timeout',functio
 
 gameApp.controller('HomeCtrl',['$scope','$rootScope','$timeout',function($scope,$rootScope,$timeout){
     var q = $('#square');
-    var game = $('#gamecanvas');
-
+    var game = $('#gameCanvas');
     game.width($(document).width());
     game.height($(document).height());
     $scope.score = 0;
+    $scope.time = 900;
+    $scope.squareDrawed = 0;
+    $scope.squareClicked = false;
+
+    var loop = setInterval(function(){
+        $scope.drawSquare();
+    },  $scope.time );
 
     $scope.updateScore = function(){
-        $('#square').remove();
-        $scope.drawSquare();
-        $scope.score++;
+        console.log($scope.squareClicked)
+        if($scope.squareClicked === false){
+            $scope.squareClicked = true;
+            $scope.score++;
+        }
+        $scope.time = $scope.time - 10;
+        $scope.startGame = false;
     },
 
     $scope.updateScoreBonus = function(){
-        $('#bonus').remove();
-        $scope.drawSquare();
+        $scope.squareDrawed++;
+        $scope.squareClicked = true;
         $scope.score = $scope.score + 5;
+        $scope.time = $scope.time - 20;
     }
 
     $scope.drawSquare = function(){
+        if(($scope.squareDrawed == 0 && $scope.squareClicked == false) || $scope.squareClicked == false){
+            q.css('black')
+            clearInterval(loop);
+            return false;
+        }
+        $scope.squareClicked = false;
         var top  = Math.floor(Math.random()*$(document).height());
         var left = Math.floor(Math.random()*$(document).width());
-        var topFinal = (top <= 60) ? 60 : top;
-        var leftFinal = (left < 0) ? 0 : left;
+        var topFinal = (top <= 60) ? 60 : (top >=  598) ? 590 : top;
+        var leftFinal = (left <= 0) ? 0 : (left >= 348) ? 345 : left;
 
         q.css('top',topFinal);
         q.css('left',leftFinal);
-        $('#gameCanvas').append(q)
+        q.css('position','absolute');
+        q.css('z-index',9999);
+        $('#gameCanvas').css('position','relative').append(q)
     }
 
 
