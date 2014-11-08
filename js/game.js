@@ -42,7 +42,7 @@ gameApp.controller('HomeCtrl', ['$scope', '$rootScope', '$timeout','$location','
 
     var loop2 = $interval(function () {
         $scope.seconds++;
-    }, 1000);
+    }, 800);
 
     $scope.updateScore = function () {
         $scope.squareClicked = true;
@@ -62,7 +62,6 @@ gameApp.controller('HomeCtrl', ['$scope', '$rootScope', '$timeout','$location','
             $interval.cancel(loop2);
             loop = undefined;
             $scope.blocked = true;
-            window.clearInterval(timerId);
             return false;
         }
         $scope.squareClicked = false;
