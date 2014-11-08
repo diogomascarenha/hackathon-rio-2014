@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html ng-app="gameApp">
+<head>
+    <title></title>
+</head>
+<body ng-controller="game">
+<canvas ng-init="initGame()" ng-click="updateRectPositions()" id="game"></canvas>
+<div>Score: <span ng-bind="score"></span></div>
+</body>
+<script src="js/angular/angular.min.js"></script>
+<script src="js/game.js"></script>
+</html>
