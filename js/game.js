@@ -42,7 +42,7 @@ gameApp.controller('HomeCtrl', ['$scope', '$rootScope', '$timeout','$location','
 
     var loop2 = $interval(function () {
         $scope.seconds++;
-    }, 999);
+    }, 1000);
 
     $scope.updateScore = function () {
         $scope.squareClicked = true;
