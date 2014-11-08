@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html ng-app="gameApp">
 <head>
-    <title></title>
+    <title>Square</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="stylesheet" href="css/style.css"/>
 </head>
-<body ng-controller="game">
-<canvas ng-init="initGame()" ng-click="updateRectPositions()" id="game"></canvas>
-<div>Score: <span ng-bind="score"></span></div>
+<body>
+    <div id="appCanvas">
+        <div ng-view></div>
+    </div>
 </body>
 <script src="js/angular/angular.min.js"></script>
+<script src="js/angular/angular-route.js"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="js/moment.js"></script>
 <script src="js/game.js"></script>
 </html>
