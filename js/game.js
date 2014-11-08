@@ -1,4 +1,4 @@
-var gameApp = angular.module('gameApp',['ngRoute']);
+var gameApp = angular.module('gameApp',['ngRoute','ngTouch']);
 
 gameApp.config(['$routeProvider',
     function($routeProvider) {
@@ -19,42 +19,37 @@ gameApp.config(['$routeProvider',
 gameApp.controller('InitialScreenCtrl',['$scope','$rootScope','$timeout',function($scope,$rootScope,$timeout){
 
 }]);
+
 gameApp.controller('HomeCtrl',['$scope','$rootScope','$timeout',function($scope,$rootScope,$timeout){
     var q = $('#square');
+    var game = $('#gamecanvas');
 
-    $('body').on('click','#square',function(e){
+    game.width($(document).width());
+    game.height($(document).height());
+    $scope.score = 0;
+
+    $scope.updateScore = function(){
         $('#square').remove();
-    })
-}]);
+        $scope.drawSquare();
+        $scope.score++;
+    },
 
-//gameApp.controller('GameCtrl',['$scope','$rootScope','$timeout',function($scope,$rootScope,$timeout){
-//
-//    $scope.initGame = function(){
-//        $rootScope.canvas = document.getElementById('game');
-//        $rootScope.context = $rootScope.canvas.getContext('2d');
-//        $rootScope.canvas.width  = window.outerWidth - 100;
-//        $rootScope.canvas.height = window.outerHeight - 100;
-//        $scope.time = 4000;
-//        $scope.score = 0;
-//
-//        $scope.squareConfig = {
-//            w : 10,
-//            h : 10
-//        }
-//
-//        $scope.drawRect();
-//    }
-//
-//    $scope.drawRect = function(){
-//        $rootScope.context.fillRect(56,15,$scope.squareConfig.w,$scope.squareConfig.h);
-//    },
-//
-//    $scope.updateRectPositions = function(event){
-//        var posX = event.offsetX;
-//        var posY = event.offsetY;
-//
-//        console.log('pos X:' + parseInt(posX + $scope.squareConfig.w),'pos Y' + parseInt(posY + $scope.squareConfig.h));
-//        //$rootScope.context.clearRect(0,0,$rootScope.canvas.width,$rootScope.canvas.height);
-//        //$scope.score++;
-//    }
-//}]);
+    $scope.updateScoreBonus = function(){
+        $('#bonus').remove();
+        $scope.drawSquare();
+        $scope.score = $scope.score + 5;
+    }
+
+    $scope.drawSquare = function(){
+        var top  = Math.floor(Math.random()*$(document).height());
+        var left = Math.floor(Math.random()*$(document).width());
+        var topFinal = (top <= 60) ? 60 : top;
+        var leftFinal = (left < 0) ? 0 : left;
+
+        q.css('top',topFinal);
+        q.css('left',leftFinal);
+        $('#gameCanvas').append(q)
+    }
+
+
+}]);
